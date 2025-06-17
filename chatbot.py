@@ -5,7 +5,7 @@ import requests
 
 # CONFIG API KEY
 
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 MODEL = "openai/gpt-3.5-turbo"
 
 HEADERS = {
