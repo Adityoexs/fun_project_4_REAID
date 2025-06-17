@@ -1,8 +1,11 @@
 import streamlit as st
 import requests
 
+
+
 # CONFIG API KEY
-OPENROUTER_API_KEY = "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"
+
+OPENROUTER_API_KEY = "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"
 MODEL = "openai/gpt-3.5-turbo"
 
 HEADERS = {
@@ -14,12 +17,13 @@ HEADERS = {
 
 API_URL = f"https://openrouter.ai/api/v1/chat/completions"
 
-# ===================================
+
+#===================================
 # Streamlit UI Configuration
 st.set_page_config(page_title="AI Chatbot", page_icon="🤖", layout="wide")
 
 # Header and Introduction
-st.title("AI Chatbot")
+st.title("AIO Chatbot")
 st.markdown(f"Powered by [Open AI](https://openrouter.ai) and 'OpenRouter'. 🤖")
 st.markdown("""
     **Chat with the AI assistant** below.  
@@ -73,6 +77,14 @@ if user_input:
                 bot_reply = response.json()["choices"][0]["message"]["content"]
             except requests.exceptions.RequestException as e:
                 bot_reply = f"Error fetching response from the API: {e}"
+
+        if response.status_code == 401:
+            bot_reply = "Unauthorized: API key mungkin salah atau tidak valid. Silakan periksa API key Anda."
+        elif response.status_code == 200:
+            bot_reply = response.json()["choices"][0]["message"]["content"]
+        else:
+            bot_reply = "Gagal mendapatkan jawaban dari AI. Periksa koneksi atau coba lagi nanti."
+
 
         # Display assistant's message in a nice format
         st.chat_message("assistant").markdown(f"**Assistant**: {bot_reply}")
