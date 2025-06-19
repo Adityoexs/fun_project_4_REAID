@@ -19,7 +19,6 @@ HEADERS = {
 
 API_URL = f"https://openrouter.ai/api/v1/chat/completions"
 
-
 #===================================
 # Streamlit UI Configuration
 st.set_page_config(page_title="AI Chatbot", page_icon="🤖", layout="wide")
