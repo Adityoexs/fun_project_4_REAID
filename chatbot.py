@@ -84,7 +84,7 @@ if user_input:
         elif response.status_code == 200:
             bot_reply = response.json()["choices"][0]["message"]["content"]
         else:
-            bot_reply = "Gagal mendapatkan jawaban dari AI. Periksa koneksi atau coba lagi nanti."
+            bot_reply = "Gagal mendapatkan jawaban dari AI. Periksa koneksi atau coba lagi nanti. {response.status_code} - {response.text}"
 
 
         # Display assistant's message in a nice format
