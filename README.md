@@ -11,9 +11,10 @@ This AIO Chatbot is powered by **OpenRouter** and **OpenAI's GPT-3.5-turbo** mod
 
 ## Preview
 
-![Screenshot 2025-06-17 175649](https://github.com/user-attachments/assets/19fa526f-70cd-498b-914a-dbb899bf4548)
-![Screenshot 2025-06-17 175654](https://github.com/user-attachments/assets/588d2221-ff80-491d-9fc7-401a539a8a19)
-![Screenshot 2025-06-17 175729](https://github.com/user-attachments/assets/646cfd99-7e93-49a4-a999-ea50c8f5d91c)
+![Screenshot 2025-06-17 175649](https://github.com/user-attachments/assets/a3d73365-187b-4c97-8fea-a41a5ea4f578)
+![Screenshot 2025-06-17 175654](https://github.com/user-attachments/assets/7f13db40-2982-45d0-9986-2f2ed826041b)
+![Screenshot 2025-06-17 175729](https://github.com/user-attachments/assets/38e7e8b6-55d3-4bb5-aafc-c27c069f439f)
+
 *AIO Chatbot Interface Preview*  
   
 Here’s what the interface looks like:
