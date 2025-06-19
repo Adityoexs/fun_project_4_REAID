@@ -80,7 +80,7 @@ if user_input:
                 bot_reply = f"Error fetching response from the API: {e}"
 
         if response.status_code == 401:
-            bot_reply = "Unauthorized: API key mungkin salah atau tidak valid. Silakan periksa API key Anda."
+            bot_reply = "Unauthorized: API key mungkin salah atau tidak valid. Silakan periksa API key Anda. {response.status_code} - {response.text}"
         elif response.status_code == 200:
             bot_reply = response.json()["choices"][0]["message"]["content"]
         else:
