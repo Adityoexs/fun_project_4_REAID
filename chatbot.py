@@ -3,9 +3,8 @@ import requests
 from dotenv import load_dotenv
 import os
 
-
 # CONFIG API KEY
-load_dotenv() 
+load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("API_KEY")
 MODEL = "openai/gpt-3.5-turbo"
@@ -23,8 +22,43 @@ API_URL = f"https://openrouter.ai/api/v1/chat/completions"
 # Streamlit UI Configuration
 st.set_page_config(page_title="AI Chatbot", page_icon="🤖", layout="wide")
 
+# Apply custom styles for a modern feel
+st.markdown(
+    """
+    <style>
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+    .stButton>button:hover {
+        background-color: #45a049;
+    }
+    .stChatMessage {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    .stTextArea textarea {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    .stExpanderHeader {
+        color: #3E8E41;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Header and Introduction
-st.title("AIO Chatbot")
+st.title("🤖 AIO Chatbot")
 st.markdown(f"Powered by [Open AI](https://openrouter.ai) and 'OpenRouter'. 🤖")
 st.markdown("""
     **Chat with the AI assistant** below.  
@@ -86,20 +120,19 @@ if user_input:
         else:
             bot_reply = f"Gagal mendapatkan jawaban dari AI. Periksa koneksi atau coba lagi nanti. {response.status_code} - {response.text}"
 
-
         # Display assistant's message in a nice format
         st.chat_message("assistant").markdown(f"**Assistant**: {bot_reply}")
         st.session_state.chat_history.append({"role": "assistant", "content": bot_reply})
 
-        # Add a feedback button for users
-        feedback = st.text_area("Let us know your thoughts about this reply:", key="feedback_area")
-        
-        if st.button("Provide Feedback", key="feedback_button"):
-            if len(feedback.strip()) == 0:
-                st.warning("Please provide some feedback before submitting.")
-            else:
-                st.success("Thank you for your feedback!")
-                # You can handle the feedback storage or sending it to an API if needed
+        # Add a collapsible feedback section
+        with st.expander("Provide Feedback", expanded=False):
+            feedback = st.text_area("Let us know your thoughts about this reply:", key="feedback_area")
+            if st.button("Submit Feedback", key="feedback_button"):
+                if len(feedback.strip()) == 0:
+                    st.warning("Please provide some feedback before submitting.")
+                else:
+                    st.success("Thank you for your feedback!")
+                    # You can handle the feedback storage or sending it to an API if needed
 
 else:
     st.info("Type your message in the input box above to start chatting.")
